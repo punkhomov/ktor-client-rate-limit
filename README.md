@@ -1,4 +1,6 @@
 # ktor-client-rate-limit
+[![Release](https://jitpack.io/v/punkhomov/ktor-client-rate-limit.svg)](https://jitpack.io/#punkhomov/ktor-client-rate-limit)
+
 This simple [ktor](https://github.com/ktorio/ktor) plugin provides the "rate-limiting mechanic" on the client side.
 
 ## How to use it?
@@ -8,12 +10,13 @@ You have to install the plugin and set up rate-limiting rules.
 
 repositories {
     //...
-    maven { url "https://jitpack.io"  }
+    maven(url = "https://jitpack.io")
 }
 
 dependencies {
     // ...
-    implementation("com.github.punkhomov:ktor-client-rate-limit:0.0.1")
+    implementation("com.github.punkhomov:ktor-client-rate-limit:master-SNAPSHOT")
+    // or individual artifact as "com.github.punkhomov.ktor-client-rate-limit:ktor-client-rate-limit"
 }
 ```
 
