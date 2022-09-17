@@ -1,10 +1,11 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-//    kotlin("multiplatform") version "1.7.0"
+    `maven-publish`
     alias(libs.plugins.kotlin.multiplatform)
 }
 
 group = "punkhomov.ktor.client.ratelimit"
-version = "1.0"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
@@ -36,19 +37,16 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
-//                compileOnly("io.ktor:ktor-client-core:2.0.2")
-//                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
                 compileOnly(libs.ktor.client.core)
                 implementation(libs.kotlinx.datetime)
             }
         }
         val commonTest by getting {
             dependencies {
-//                implementation("io.ktor:ktor-client-mock:2.0.2")
                 implementation(libs.ktor.client.mock)
                 implementation(kotlin("test"))
             }
@@ -60,4 +58,17 @@ kotlin {
         val nativeMain by getting
         val nativeTest by getting
     }
+
+    val publicationsFromMainHost = listOf(jvm(), js()).map { it.name } + "kotlinMultiplatform"
+    publishing {
+        publications {
+            matching { it.name in publicationsFromMainHost }.all {
+                val targetPublication = this@all
+                tasks.withType<AbstractPublishToMaven>()
+                    .matching { it.publication == targetPublication }
+                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
+            }
+        }
+    }
 }
+

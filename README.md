@@ -3,6 +3,19 @@ This simple [ktor](https://github.com/ktorio/ktor) plugin provides the "rate-lim
 
 ## How to use it?
 You have to install the plugin and set up rate-limiting rules.
+```kotlin
+// build.gradle.kts
+
+repositories {
+    //...
+    maven { url "https://jitpack.io"  }
+}
+
+dependencies {
+    // ...
+    implementation("com.github.punkhomov:ktor-client-rate-limit:0.0.1")
+}
+```
 
 Some simple rules are available from the `punkhomov.ktor.client.ratelimit.impl` package. If these rules are not enough, then you can create custom rules by implementing the ``RateLimitRule`` interface (~~see below~~ coming soon).
 
