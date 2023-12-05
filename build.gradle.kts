@@ -21,10 +21,12 @@ kotlin {
             useJUnitPlatform()
         }
     }
-    js(BOTH) {
+    js {
         browser {
             commonWebpackConfig {
-                cssSupport.enabled = true
+                cssSupport {
+                    enabled.set(false)
+                }
             }
         }
     }
