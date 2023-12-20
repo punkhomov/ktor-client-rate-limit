@@ -38,6 +38,8 @@ HttpClient {
 ```
 
 ## What are default rules?
+_NOTE: The rules are applied in accordance with the order in which they are added.
+For example, a `default()` rule added first will take precedence over all others, making them unreachable._
 
 ### Filtering
 First, you need to filter your requests. For that, you can use "matching" methods or a ``select`` method in more complex matching cases.
@@ -163,9 +165,3 @@ Or limit to 3 permits in 1 second only.
 ```kotlin
 RULE_BUILDER.rate(3, 1, DurationUnit.SECONDS)
 ```
-
-
-## TODO
-- [ ] Auto-deleting of unused groups.
-- [ ] Handling `429 Too Many Requests` http status (repeat the request with a delay taken from the response + append the repeated request to the begging of the request queue).
-- [ ] Handling request cancellation.
