@@ -51,6 +51,7 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.mock)
                 implementation(kotlin("test"))
+                implementation(libs.kotlinx.coroutines.test)
             }
         }
         val jvmMain by getting

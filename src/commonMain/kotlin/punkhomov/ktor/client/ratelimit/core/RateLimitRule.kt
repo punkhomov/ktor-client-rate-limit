@@ -6,7 +6,7 @@ interface RateLimitRule {
     /**
      * The list of rates.
      */
-    val rates: List<RateInfo>
+    val rates: List<Rate>
 
     /**
      * The function checks if the given request matches this rule and should be handled.

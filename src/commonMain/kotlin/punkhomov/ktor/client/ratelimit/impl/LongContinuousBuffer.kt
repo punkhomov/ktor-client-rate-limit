@@ -6,6 +6,12 @@ class LongContinuousBuffer(val capacity: Int) {
     var size = 0
         private set
 
+    constructor(capacity: Int, init: (index: Int) -> Long) : this(capacity) {
+        repeat(capacity) {
+            add(init(it))
+        }
+    }
+
     fun isEmpty() = size == 0
 
     fun add(element: Long) {
@@ -42,14 +48,14 @@ class LongContinuousBuffer(val capacity: Int) {
     }
 }
 
-fun LongContinuousBuffer.oldest(): Long {
+fun LongContinuousBuffer.first(): Long {
     if (isEmpty())
         throw NoSuchElementException("LongContinuousBuffer is empty.")
 
     return get(0)
 }
 
-fun LongContinuousBuffer.newest(): Long {
+fun LongContinuousBuffer.last(): Long {
     if (isEmpty())
         throw NoSuchElementException("LongContinuousBuffer is empty.")
 

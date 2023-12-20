@@ -120,6 +120,6 @@ fun RateLimitRuleBuilderWrapper.rate(block: MultiRateBuilder.() -> Unit) {
  */
 fun RateLimitRuleBuilderWrapper.rate(
     permits: Int,
-    period: Int,
+    period: Long,
     unit: DurationUnit,
 ) = rate { add(permits, period, unit) }

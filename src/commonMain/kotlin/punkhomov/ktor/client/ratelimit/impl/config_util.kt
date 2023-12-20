@@ -2,7 +2,7 @@ package punkhomov.ktor.client.ratelimit.impl
 
 import io.ktor.client.request.*
 import io.ktor.http.*
-import punkhomov.ktor.client.ratelimit.core.RateInfo
+import punkhomov.ktor.client.ratelimit.core.Rate
 import kotlin.time.DurationUnit
 
 class RequestMatcherNotInPaths(val paths: List<String>) : RequestMatcher {
@@ -19,17 +19,17 @@ class RequestMatcherNotInHosts(val hosts: List<String>) : RequestMatcher {
 
 
 class MultiRateBuilder {
-    private val rates = ArrayList<RateInfo>()
+    private val rates = ArrayList<Rate>()
 
-    fun add(rate: RateInfo) {
+    fun add(rate: Rate) {
         rates.add(rate)
     }
 
     fun add(
         permits: Int,
-        period: Int,
+        period: Long,
         unit: DurationUnit,
-    ) = add(RateInfo(permits, period, unit))
+    ) = add(Rate(permits, period, unit))
 
     internal fun toRates() = rates.toList()
 }
