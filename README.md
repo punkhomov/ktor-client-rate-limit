@@ -37,7 +37,10 @@ HttpClient {
 }
 ```
 
-## What are default rules?
+## What are default rules? (*Deprecated*)
+***Avoid using unclear configurations, rule(...) should be used.***
+
+*Documentation on the new configuration system will be available soon.*
 
 ### Filtering
 First, you need to filter your requests. For that, you can use "matching" methods or a ``select`` method in more complex matching cases.
