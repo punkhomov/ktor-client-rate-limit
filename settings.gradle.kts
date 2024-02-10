@@ -3,10 +3,10 @@ rootProject.name = "ktor-client-rate-limit"
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.9.21")
+            version("kotlin", "1.9.22")
             version("kotlinx-datetime", "0.5.0")
             version("kotlinx-coroutines", "1.7.1")
-            version("ktor", "2.3.6")
+            version("ktor", "2.3.8")
 
             plugin("kotlin-multiplatform", "org.jetbrains.kotlin.multiplatform").versionRef("kotlin")
 
